@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coder XYZ v4 — Offline AI Coding</title>
+<link rel="stylesheet" href="coderpage.css">
+</head>
+<body>
+
+<main class="stage">
+
+  <!-- Header / Top Bar -->
+  <header class="topbar">
+    <h1 class="brand">Coder XYZ v4</h1>
+    <div class="controls">
+      <button id="download">Download Project</button>
+    </div>
+  </header>
+
+  <!-- Workspace -->
+  <section class="workspace">
+
+    <!-- Prompt Panel -->
+    <aside class="panel prompt">
+      <label for="promptInput">Project Prompt</label>
+      <textarea id="promptInput" placeholder="Describe your project" rows="6"></textarea>
+      <div class="hint">Tip: Include pages, backend, frontend, and features.</div>
+
+      <div class="prompt-options">
+        <label><input type="radio" name="langRadio" value="webpage" checked> Webpage (HTML+CSS+JS)</label>
+        <label><input type="radio" name="langRadio" value="python"> Python</label>
+        <label><input type="radio" name="langRadio" value="java"> Java</label>
+        <label><input type="radio" name="langRadio" value="ruby"> Ruby</label>
+        <label><input type="radio" name="langRadio" value="php"> PHP</label>
+        <label><input type="radio" name="langRadio" value="c"> C</label>
+        <label><input type="radio" name="langRadio" value="c++"> C++</label>
+        <label><input type="radio" name="langRadio" value="c#"> C#</label>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; margin-top:6px; gap:6px;">
+        <button id="generate">Generate Code</button>
+        <button id="previewBtn">Preview</button>
+      </div>
+
+      <div class="copy-buttons"></div>
+    </aside>
+
+    <!-- Canvas Panel -->
+    <section class="panel canvas">
+      <div class="viewport">
+        <pre id="code" class="code" tabindex="0" aria-live="polite"></pre>
+      </div>
+      <iframe id="preview" class="preview"></iframe>
+    </section>
+
+  </section>
+
+  <footer class="footer">Offline AI Coding • Multi-language • Copy & Download</footer>
+</main>
+
+<script src="jszip.min.js"></script>
+<script src="coderpage.js"></script>
+</body>
+</html>

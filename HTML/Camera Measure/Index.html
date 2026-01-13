@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Color + Measure — Material</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">Color & Measure</div>
+    <div class="controls-right">
+      <button id="hamburger" class="icon-btn" aria-label="Open sidebar">☰</button>
+    </div>
+  </header>
+
+  <aside id="sideMenu" class="sideMenu" aria-hidden="true">
+    <div class="menu-head">
+      <h3>Captured Colors</h3>
+      <div class="menu-actions">
+        <button id="clearColors" class="btn danger">Clear</button>
+        <button id="closeMenu" class="icon-btn">✕</button>
+      </div>
+    </div>
+
+    <div id="menuBody" class="menu-body">
+      <div id="colorList" class="menu-list"></div>
+
+      <hr>
+
+      <h4>Measurements</h4>
+      <div class="measure-panel">
+        <div>Calibration: <span id="calibInfo">Not set</span></div>
+        <div>Last measure: <span id="lastMeasure">—</span></div>
+        <div class="measure-controls">
+          <button id="calibrateBtn" class="btn">Calibrate</button>
+          <button id="measureBtn" class="btn">Measure</button>
+          <button id="edgeToggle" class="btn">Toggle Edges</button>
+        </div>
+        <div class="hint small">Workflow: Capture → Calibrate (pick 2 points & enter real length) → Measure (pick 2 points)</div>
+      </div>
+    </div>
+  </aside>
+
+  <div id="overlay" class="overlay" hidden></div>
+
+  <main class="main">
+    <section class="camera-area">
+      <div class="camera-card">
+        <video id="camera" autoplay playsinline muted></video>
+
+        <!-- frozen preview canvas sits above video after capture -->
+        <canvas id="previewCanvas" class="preview-canvas" hidden></canvas>
+
+        <!-- edge overlay on top -->
+        <canvas id="edgeCanvas" class="edge-canvas" hidden></canvas>
+      </div>
+
+      <div class="controls">
+        <button id="captureBtn" class="capture-btn">Capture Frame</button>
+        <button id="saveSnapshot" class="btn ghost" title="Save snapshot image">Save Snapshot</button>
+        <div class="hint">Use Capture to freeze frame for color sampling & measurement.</div>
+      </div>
+
+      <div class="magnifier-wrap">
+        <label class="small">Live magnifier</label>
+        <canvas id="magnifierCanvas" width="160" height="160" class="magnifier-canvas"></canvas>
+        <div class="small muted">Separate live zoom (doesn't affect capture)</div>
+      </div>
+
+      <div class="preview-card" id="previewCard" hidden>
+        <canvas id="previewThumb" width="160" height="160"></canvas>
+        <div class="preview-meta">
+          <div id="previewHex" class="big-hex">#------</div>
+          <div id="previewRGB">RGB: —</div>
+          <div id="previewCMYK">CMYK: —</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- hidden working canvas at video native resolution -->
+  <canvas id="hiddenCanvas" style="display:none;"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
